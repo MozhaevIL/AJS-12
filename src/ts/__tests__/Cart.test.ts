@@ -54,7 +54,7 @@ test('should calculate total price of cart', () => {
 
   const recieved = testCart.getTotalPrice();
 
-  expect(recieved).toEqual(expected);
+  expect(recieved).toBe(expected);
 });
 
 test('should calculate total price of cart with discount', () => {
@@ -63,7 +63,7 @@ test('should calculate total price of cart with discount', () => {
 
   const recieved:number = testCart.getTotalDiscountedPrice(30);
 
-  expect(recieved).toEqual(expected);
+  expect(recieved).toBe(expected);
 });
 
 test('should delete item from cart by id', () => {

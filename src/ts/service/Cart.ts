@@ -20,20 +20,18 @@ export default class Cart {
     }
 
     getTotalDiscountedPrice(discount: number):number {
-        const initialPrice: number = this.getTotalPrice();
-        return initialPrice - initialPrice * (discount / 100);
+        const initialPrice = this.getTotalPrice();
+        return initialPrice - initialPrice * (discount/100);
     }
 
     delete(id: number): void {
-        let foundElement: boolean = false;
-        this.items.forEach((element => {
-          if(element.id === id) {
-            this._items.splice(this._items.indexOf(element), 1);
-            foundElement = true;
-          }
-        }))
-        if (!foundElement) {
+        const editedItems = this._items.filter((item) => {
+          return item.id !== id;
+          });
+        if (editedItems.length === this._items.length) {
           throw new Error('id не найден');
+        } else {
+          this._items = editedItems;
         }
-      }
+    }
 }
