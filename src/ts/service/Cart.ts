@@ -12,11 +12,7 @@ export default class Cart {
     }
 
     getTotalPrice(): number {
-        let totalPrice = 0;
-        for (let item of this._items) {
-            totalPrice += item.price;
-        }
-        return totalPrice;
+        return this._items.reduce((sum: number, item: Buyable) => {return sum + item.price}, 0);
     }
 
     getTotalDiscountedPrice(discount: number):number {
